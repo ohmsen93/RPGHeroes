@@ -8,6 +8,8 @@ namespace RPGHeroes.Equipment
 {
     public class EquipmentFactory
     {
+        /* Missing some way of handeling enchantments, in order to make equipment that can add to overallAttributes */
+
         private static readonly Dictionary<string, WeaponBaseType> WeaponBaseTypes = new Dictionary<string, WeaponBaseType>
         {
             { "Axes", WeaponBaseType.Axe },

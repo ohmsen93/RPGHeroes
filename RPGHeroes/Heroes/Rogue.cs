@@ -34,6 +34,7 @@ namespace RPGHeroes.Heroes
             Strength = 2;
             Dexterity = 6;
             Intelligence = 1;
+            Class = "Rogue";
 
         }
 

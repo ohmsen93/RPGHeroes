@@ -13,6 +13,8 @@ namespace RPGHeroes.Heroes
         public int Health { get; set; }
         public int Mana { get; set; }
 
+        public string Class { get; set; }
+
         /*
         im thinking having two types of stats, Base which is the stats the hero is initialized + the stats from stat growth.
         and then the Stats Strength, Dexterity, Intelligence could be calculated as equipment with stat enchantments was added.
@@ -52,12 +54,13 @@ namespace RPGHeroes.Heroes
             }
         }
 
-        public void Damage()
+        public int Damage()
         {
             /* 
              * Should return a value we can use in Display, and if we code in combat.
              * Hero damage = WeaponDamage * (1 + DamagingAttribute/100)
              */
+            return 10;
         }
 
         public void TotalAttributes()
@@ -72,9 +75,17 @@ namespace RPGHeroes.Heroes
 
         }
 
-        public void Display()
+        public string Display()
         {
-            
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Name: " + Name + "\n");
+            sb.Append("Class: " + Class + "\n");
+            sb.Append("Level: " + Level + "\n");
+            sb.Append("Total Strength: " + Strength + "\n");
+            sb.Append("Total Dexterity: " + Dexterity + "\n");
+            sb.Append("Total Intelligence: " + Intelligence + "\n");
+            sb.Append("Damage: " + Damage() + "\n");
+            return sb.ToString();
         }
 
 

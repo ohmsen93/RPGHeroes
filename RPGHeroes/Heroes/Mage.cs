@@ -34,6 +34,7 @@ namespace RPGHeroes.Heroes
             Strength = 1;
             Dexterity = 1;
             Intelligence = 8;
+            Class = "Mage";
 
         }
 
