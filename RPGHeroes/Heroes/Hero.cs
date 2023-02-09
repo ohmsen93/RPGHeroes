@@ -36,6 +36,7 @@ namespace RPGHeroes.Heroes
         {
             Name = name;
             Level = 1;
+            Equipment = new Dictionary<Enum, object>();
         }
 
         public void LevelUp(int strengthGrowth, int dexterityGrowth, int intelligenceGrowth)

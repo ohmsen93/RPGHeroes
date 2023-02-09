@@ -12,13 +12,13 @@ namespace RPGHeroes.Equipment
 
         private static readonly Dictionary<string, WeaponBaseType> WeaponBaseTypes = new Dictionary<string, WeaponBaseType>
         {
-            { "Axes", WeaponBaseType.Axe },
-            { "Bows", WeaponBaseType.Bow },
-            { "Daggers", WeaponBaseType.Dagger },
-            { "Hammers", WeaponBaseType.Hammer },
-            { "Staffs", WeaponBaseType.Staff },
-            { "Swords", WeaponBaseType.Sword },
-            { "Wands", WeaponBaseType.Wand }
+            { "Axe", WeaponBaseType.Axe },
+            { "Bow", WeaponBaseType.Bow },
+            { "Dagger", WeaponBaseType.Dagger },
+            { "Hammer", WeaponBaseType.Hammer },
+            { "Staff", WeaponBaseType.Staff },
+            { "Sword", WeaponBaseType.Sword },
+            { "Wand", WeaponBaseType.Wand }
         };
 
         private static readonly Dictionary<string, ArmorSlot> ArmorSlots = new Dictionary<string, ArmorSlot>
