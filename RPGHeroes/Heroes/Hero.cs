@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +15,12 @@ namespace RPGHeroes.Heroes
 
         public abstract string CharacterClass { get; }
 
-        /*
-        im thinking having two types of stats, Base which is the stats the hero is initialized + the stats from stat growth.
-        and then the Stats Strength, Dexterity, Intelligence could be calculated as equipment with stat enchantments was added.
+        public Attributes Attributes { get; set; }
 
-        public int BaseStrength { get; set; }
-        public int BaseDexterity { get; set; }
-        public int BaseIntelligence { get; set; }
-        */
-        public HeroAttributes Attributes { get; set; }
 
-        public HeroAttributeGrowth AttributeGrowth { get; set; }
+        public string DamagingAttribute { get; set; }
+
+        public AttributeGrowth AttributeGrowth { get; set; }
         public List<WeaponBaseType> ValidWeaponTypes { get; set; }
         public List<ArmorType> ValidArmorTypes { get; set; }
         public Dictionary<EquipmentSlot, Equipment.Equipment> Equipment { get; set; }
@@ -35,8 +31,8 @@ namespace RPGHeroes.Heroes
             Name = name;
             Level = 1;
             Equipment = new Dictionary<EquipmentSlot, Equipment.Equipment>();
-            Attributes = new HeroAttributes();
-            AttributeGrowth = new HeroAttributeGrowth();
+            Attributes = new Attributes();
+            AttributeGrowth = new AttributeGrowth();
         }
 
         public virtual void LevelUp()
@@ -54,38 +50,75 @@ namespace RPGHeroes.Heroes
 
         public int Damage()
         {
-            /* 
-             * Should return a value we can use in Display, and if we code in combat.
-             * Hero damage = WeaponDamage * (1 + DamagingAttribute/100)
-             */
-            return 10;
+            var totalAttributes = TotalAttributes(); 
+
+            var weaponDamage = Equipment[EquipmentSlot.MainHand].Attack;
+            var damagingAttribute = 0;
+
+            switch (DamagingAttribute)
+            {
+                case "Strength":
+                    damagingAttribute = totalAttributes.Strength;
+                    break;
+                case "Dexterity":
+                    damagingAttribute = totalAttributes.Dexterity;
+                    break;
+                case "Intelligence":
+                    damagingAttribute = totalAttributes.Intelligence;
+                    break;
+                default:
+                    break;
+            }
+
+            var damage = weaponDamage * (1 + damagingAttribute / 100);
+            return damage;
         }
 
-        public void TotalAttributes()
+        public Attributes TotalAttributes()
         {
-            /*
-            Requires a split between base stats and overall stats
 
-            would end up with something like
+            var returnAttr = new Attributes();
 
-            OverallStrength = BaseStrength + Strength, where basestrength is gained from initialization and levelups, and strength is gained from equipment.
-            */
+            returnAttr.Strength = Attributes.Strength;
+            returnAttr.Dexterity = Attributes.Dexterity;
+            returnAttr.Intelligence = Attributes.Intelligence;
 
+
+                foreach (var slot in Equipment)
+                {
+                    returnAttr.Strength += slot.Value.EnchantmentAttributes.Strength;
+                    returnAttr.Dexterity += slot.Value.EnchantmentAttributes.Dexterity;
+                    returnAttr.Intelligence += slot.Value.EnchantmentAttributes.Intelligence;
+                }
+
+                return returnAttr;
         }
+
+
 
         public string Display()
         {
+            var totalAttributes = TotalAttributes();
             StringBuilder sb = new StringBuilder();
             sb.Append("Name: " + Name + "\n");
             sb.Append("Class: " + CharacterClass + "\n");
             sb.Append("Level: " + Level + "\n");
-            sb.Append("Total Strength: " + Attributes.Strength + "\n");
-            sb.Append("Total Dexterity: " + Attributes.Dexterity + "\n");
-            sb.Append("Total Intelligence: " + Attributes.Intelligence + "\n");
+            sb.Append("Total Strength: " + totalAttributes.Strength + "(+"+ (totalAttributes.Strength -Attributes.Strength) +")" + "\n");
+            sb.Append("Total Dexterity: " + totalAttributes.Dexterity + "(+" + (totalAttributes.Dexterity - Attributes.Dexterity) + ")" + "\n");
+            sb.Append("Total Intelligence: " + totalAttributes.Intelligence + "(+" + (totalAttributes.Intelligence -Attributes.Intelligence) + ")" + "\n");
             sb.Append("Damage: " + Damage() + "\n");
             foreach (var slot in Equipment)
             {
-                Console.WriteLine("Slot: " + slot.Key + "\nName: " + slot.Value.Name + "\nDefense: " + slot.Value.Defense + "\n____________");
+    
+                Console.WriteLine(
+                    "Slot: " + slot.Key + 
+                    "\nName: " + slot.Value.Name + 
+                    "\nDefense: " + slot.Value.Defense + 
+                    "\nEnchantments - " + 
+                    "\nStrength: " + slot.Value.EnchantmentAttributes.Strength + 
+                    "\nDexterity: " + slot.Value.EnchantmentAttributes.Dexterity + 
+                    "\nIntelligence: " + slot.Value.EnchantmentAttributes.Intelligence + 
+                    "\n____________");
             }
 
             return sb.ToString();

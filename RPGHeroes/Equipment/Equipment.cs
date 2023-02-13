@@ -18,23 +18,22 @@ namespace RPGHeroes.Equipment
         public int Attack { get; set; }
         public int Defense { get; set; }
         public int LevelRequirement { get; set; }
-        
-        /* Grab HeroAttributes to utilize the Attribute logic */
-        public HeroAttributes EnchantmentAttributes { get; set; }
+        public Attributes EnchantmentAttributes { get; set; }
 
 
-        public Equipment(string name, int attack, int defense, int levelRequirement)
+        public Equipment(string name, int attack, int defense, int levelRequirement, int strengthEnchantment, int dexterityEnchantment, int intelligenceEnchantment)
         {
             Name = name;
             Attack = attack;
             Defense = defense;
             LevelRequirement = levelRequirement;
 
-            /* Create a new instance of Hero attribute for the specific Equipment */
+            EnchantmentAttributes = new Attributes();
 
-            /* This is where im at, im wondering if i should use an object in the factory/weapon/armor to handle Str, Dex and Int together called enchantmentAttributes or the like ? */
+            EnchantmentAttributes.Strength = strengthEnchantment;
+            EnchantmentAttributes.Dexterity = dexterityEnchantment;
+            EnchantmentAttributes.Intelligence = intelligenceEnchantment;
 
-            EnchantmentAttributes = new HeroAttributes();
         }
 
     }

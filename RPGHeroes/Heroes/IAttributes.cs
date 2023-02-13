@@ -1,6 +1,6 @@
 ﻿namespace RPGHeroes.Heroes;
 
-public interface IHeroAttributes
+public interface IAttributes
 {
     int Strength { get; set; }
     int Dexterity { get; set; }

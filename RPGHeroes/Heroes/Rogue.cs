@@ -23,6 +23,9 @@ namespace RPGHeroes.Heroes
                 ArmorType.Leather, ArmorType.Mail
             };
 
+            DamagingAttribute = "Dexterity";
+
+
             Attributes.Strength = 2;
             AttributeGrowth.StrengthGrowth = 1;
 

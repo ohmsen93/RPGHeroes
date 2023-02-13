@@ -35,5 +35,5 @@ public abstract class EquipmentFactory
         { "Offhand", EquipmentSlot.OffHand }
     };
 
-    public abstract Equipment CreateEquipment(string name, int attack, int defense, int levelRequirement, string type, string subType, string weaponBaseType = null, string armorType = null);
+    public abstract Equipment CreateEquipment(string name, int attack, int defense, int levelRequirement, string type, string subType, int strengthEnchantment = 0, int dexterityEnchantment = 0, int intelligenceEnchantment = 0, string weaponBaseType = null, string armorType = null);
 }

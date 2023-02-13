@@ -24,6 +24,8 @@ namespace RPGHeroes.Heroes
                 ArmorType.Mail, ArmorType.Plate
             };
 
+            DamagingAttribute = "Strength";
+
 
             Attributes.Strength = 5;
             AttributeGrowth.StrengthGrowth = 5;

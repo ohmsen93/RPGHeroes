@@ -25,6 +25,7 @@ namespace RPGHeroes.Heroes
             };
 
 
+            DamagingAttribute = "Intelligence";
 
             Attributes.Strength = 1;
             AttributeGrowth.StrengthGrowth = 1;

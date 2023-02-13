@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGHeroes.Heroes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,14 @@ namespace RPGHeroes.Equipment
 
         public ArmorType Type { get; set; }
 
-        public Armor(string name, int defense, int levelRequirement, EquipmentSlot slot, ArmorType type) : base(name, 0, defense, levelRequirement)
+
+
+        public Armor(string name, int defense, int levelRequirement, EquipmentSlot slot, ArmorType type, int strengthEnchantment, int dexterityEnchantment, int intelligenceEnchantment) : base(name, 0, defense, levelRequirement, strengthEnchantment, dexterityEnchantment, intelligenceEnchantment)
         {
             Slot = slot;
             Type = type;
+
+
         }
     }
 }

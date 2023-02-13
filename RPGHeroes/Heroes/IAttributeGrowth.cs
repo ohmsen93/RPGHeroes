@@ -1,6 +1,6 @@
 ﻿namespace RPGHeroes.Heroes;
 
-public interface IHeroAttributeGrowth
+public interface IAttributeGrowth
 {
     int StrengthGrowth { get; set; }
     int DexterityGrowth { get; set; }
