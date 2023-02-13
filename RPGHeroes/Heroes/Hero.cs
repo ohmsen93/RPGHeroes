@@ -50,9 +50,20 @@ namespace RPGHeroes.Heroes
 
         public int Damage()
         {
-            var totalAttributes = TotalAttributes(); 
+            var totalAttributes = TotalAttributes();
 
-            var weaponDamage = Equipment[EquipmentSlot.MainHand].Attack;
+            var weaponDamage = 0;
+
+            if (Equipment.ContainsKey(EquipmentSlot.MainHand))
+            {
+                weaponDamage = Equipment[EquipmentSlot.MainHand].Attack;    
+            }
+            else
+            {
+                weaponDamage = 1;
+            }
+
+
             var damagingAttribute = 0;
 
             switch (DamagingAttribute)
