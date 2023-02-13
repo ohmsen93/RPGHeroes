@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGHeroes.Equipment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,41 +8,35 @@ using System.Threading.Tasks;
 namespace RPGHeroes.Heroes
 {
 
-    public enum WarriorWeapons
-    {
-        Axe, Hammer, Sword
-    }
 
-    public enum WarriorArmor
-    {
-        Mail, Plate
-    }
 
     public class Warrior : Hero
     {
         public Warrior(string name) : base(name)
         {
-            ValidWeaponTypes = new List<Enum>()
+            ValidWeaponTypes = new List<WeaponBaseType>()
             {
-                WarriorWeapons.Axe, WarriorWeapons.Hammer, WarriorWeapons.Sword
+                WeaponBaseType.Axe, WeaponBaseType.Hammer, WeaponBaseType.Sword
             };
 
-            ValidArmorTypes = new List<Enum>()
+            ValidArmorTypes = new List<ArmorType>()
             {
-                WarriorArmor.Mail, WarriorArmor.Plate
+                ArmorType.Mail, ArmorType.Plate
             };
 
-            Strength = 5;
-            Dexterity = 2;
-            Intelligence = 1;
-            Class = "Warrior";
+
+            Attributes.Strength = 5;
+            AttributeGrowth.StrengthGrowth = 5;
+
+            Attributes.Dexterity = 2;
+            AttributeGrowth.DexterityGrowth = 1;
+
+            Attributes.Intelligence = 1;
+            AttributeGrowth.IntelligenceGrowth = 1;
 
         }
 
-        public void levelUpAttributes()
-        {
-            base.LevelUp(3, 2, 1);
-        }
+        public override string CharacterClass => nameof(Warrior);
 
     }
 }

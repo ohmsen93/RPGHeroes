@@ -3,46 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPGHeroes.Equipment;
 
 namespace RPGHeroes.Heroes
 {
-
-    public enum RangerWeapons
-    {
-        Bow
-    }
-
-    public enum RangerArmor
-    {
-        Leather, Mail
-    }
 
     public class Ranger : Hero
     {
         public Ranger(string name) : base(name)
         {
-            ValidWeaponTypes = new List<Enum>()
+            ValidWeaponTypes = new List<WeaponBaseType>()
             {
-                RangerWeapons.Bow
+                WeaponBaseType.Bow
             };
 
-            ValidArmorTypes = new List<Enum>()
+            ValidArmorTypes = new List<ArmorType>()
             {
-                RangerArmor.Leather, RangerArmor.Mail
+                ArmorType.Leather, ArmorType.Mail
             };
 
-            Strength = 1;
-            Dexterity = 7;
-            Intelligence = 1;
-            Class = "Ranger";
+            Attributes.Strength = 1;
+            AttributeGrowth.StrengthGrowth = 1;
+
+            Attributes.Dexterity = 7;
+            AttributeGrowth.DexterityGrowth = 5;
+
+            Attributes.Intelligence = 1;
+            AttributeGrowth.IntelligenceGrowth = 1;
 
 
         }
 
-        public void levelUpAttributes()
-        {
-            base.LevelUp(1, 5, 1);
-        }
+        public override string CharacterClass => nameof(Ranger);
+
 
     }
 }

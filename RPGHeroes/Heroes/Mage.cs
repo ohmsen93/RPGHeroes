@@ -3,45 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPGHeroes.Equipment;
 
 namespace RPGHeroes.Heroes
 {
 
-    public enum MageWeapons
-    {
-        Staff, Wand
-    }
 
-    public enum MageArmor
-    {
-        Cloth
-    }
 
     public class Mage : Hero
     {
         public Mage(string name) : base(name)
         {
-            ValidWeaponTypes = new List<Enum>()
+            ValidWeaponTypes = new List<WeaponBaseType>()
             {
-                MageWeapons.Staff, MageWeapons.Wand
+                WeaponBaseType.Staff, WeaponBaseType.Wand
             };
 
-            ValidArmorTypes = new List<Enum>()
+            ValidArmorTypes = new List<ArmorType>()
             {
-                MageArmor.Cloth
+                ArmorType.Cloth
             };
 
-            Strength = 1;
-            Dexterity = 1;
-            Intelligence = 8;
-            Class = "Mage";
+
+
+            Attributes.Strength = 1;
+            AttributeGrowth.StrengthGrowth = 1;
+
+            Attributes.Dexterity = 1;
+            AttributeGrowth.DexterityGrowth = 1;
+            
+            Attributes.Intelligence = 8;
+            AttributeGrowth.IntelligenceGrowth = 5;
+
+
 
         }
 
-        public void levelUpAttributes()
-        {
-            base.LevelUp(1, 1, 5);
-        }
+        public override string CharacterClass => nameof(Mage);
+
 
     }
 }

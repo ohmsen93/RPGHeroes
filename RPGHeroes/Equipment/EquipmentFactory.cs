@@ -1,52 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RPGHeroes.Equipment;
 
-namespace RPGHeroes.Equipment
+public abstract class EquipmentFactory
 {
-    public class EquipmentFactory
+    protected readonly Dictionary<string, WeaponBaseType> WeaponBaseTypes = new Dictionary<string, WeaponBaseType>
     {
-        /* Missing some way of handeling enchantments, in order to make equipment that can add to overallAttributes */
+        { "Axe", WeaponBaseType.Axe },
+        { "Bow", WeaponBaseType.Bow },
+        { "Dagger", WeaponBaseType.Dagger },
+        { "Hammer", WeaponBaseType.Hammer },
+        { "Staff", WeaponBaseType.Staff },
+        { "Sword", WeaponBaseType.Sword },
+        { "Wand", WeaponBaseType.Wand }
+    };
 
-        private static readonly Dictionary<string, WeaponBaseType> WeaponBaseTypes = new Dictionary<string, WeaponBaseType>
-        {
-            { "Axe", WeaponBaseType.Axe },
-            { "Bow", WeaponBaseType.Bow },
-            { "Dagger", WeaponBaseType.Dagger },
-            { "Hammer", WeaponBaseType.Hammer },
-            { "Staff", WeaponBaseType.Staff },
-            { "Sword", WeaponBaseType.Sword },
-            { "Wand", WeaponBaseType.Wand }
-        };
+    protected readonly Dictionary<string, ArmorType> ArmorTypes = new Dictionary<string, ArmorType>
+    {
+        { "Cloth", ArmorType.Cloth },
+        { "Leather", ArmorType.Leather },
+        { "Mail", ArmorType.Mail },
+        { "Plate", ArmorType.Plate}
 
-        private static readonly Dictionary<string, ArmorSlot> ArmorSlots = new Dictionary<string, ArmorSlot>
-        {
-            { "Head", ArmorSlot.Head },
-            { "Chest", ArmorSlot.Chest },
-            { "Wrist", ArmorSlot.Wrist },
-            { "Hands", ArmorSlot.Hands },
-            { "Waist", ArmorSlot.Waist },
-            { "Legs", ArmorSlot.Legs },
-            { "Feet", ArmorSlot.Feet }
-        };
+    };
 
-        public Equipment CreateEquipment(string name, int attack, int defense, int levelRequirement, string type, string subType, string armorType = null)
-        {
-            if (type == "Weapon")
-            {
-                return new Weapon(name, attack, levelRequirement, WeaponBaseTypes[subType]);
-            }
-            else if (type == "Armor")
-            {
-                return new Armor(name, defense, levelRequirement, ArmorSlots[subType], (ArmorType)Enum.Parse(typeof(ArmorType), armorType));
-            }
-            else
-            {
-                return null;
-            }
-        }
+    protected readonly Dictionary<string, EquipmentSlot> EquipmentSlots = new Dictionary<string, EquipmentSlot>
+    {
+        { "Head", EquipmentSlot.Head },
+        { "Chest", EquipmentSlot.Chest },
+        { "Wrist", EquipmentSlot.Wrist },
+        { "Hands", EquipmentSlot.Hands },
+        { "Waist", EquipmentSlot.Waist },
+        { "Legs", EquipmentSlot.Legs },
+        { "Feet", EquipmentSlot.Feet },
+        { "MainHand", EquipmentSlot.MainHand },
+        { "Offhand", EquipmentSlot.OffHand }
+    };
 
-    }
+    public abstract Equipment CreateEquipment(string name, int attack, int defense, int levelRequirement, string type, string subType, string weaponBaseType = null, string armorType = null);
 }

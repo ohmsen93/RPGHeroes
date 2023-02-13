@@ -7,19 +7,24 @@ class Program
     {
 
         Mage mage = new Mage("Trogdorr");
-        
-        EquipmentFactory factory = new EquipmentFactory();
-        Equipment staff = factory.CreateEquipment("Aether Staff", 20, 0, 1, "Weapon", "Staff");
-        Equipment Cirlet = factory.CreateEquipment("Cirlet of missing enchantments", 0, 2, 1, "Armor", "Head", "Cloth");
-        Equipment Robe = factory.CreateEquipment("Aether Robe", 0, 10, 1, "Armor", "Chest", "Cloth");
-        Equipment Slippers = factory.CreateEquipment("Slippers of underwhelming potency", 0, 5, 1, "Armor", "Feet", "Cloth");
 
-        mage.Equip(MageWeapons.Staff, staff);
-        mage.Equip(MageArmor.Cloth, Cirlet);
-        mage.Equip(MageArmor.Cloth, Robe);
-        mage.Equip(MageArmor.Cloth, Slippers);
+        EquipmentFactory factory = new ConcreteEquipmentFactory();
+
+        Equipment Staff = factory.CreateEquipment("Aether Staff", 32, 0, 1, "Weapon", "MainHand", "Staff");
+        Equipment Circlet = factory.CreateEquipment("Aether Circlet", 0, 2, 1, "Armor", "Head", null, "Cloth");
+        Equipment Robe = factory.CreateEquipment("Aether Robes", 0, 32, 1, "Armor", "Chest", null, "Cloth");
+        Equipment Slippers = factory.CreateEquipment("Aether Slippers", 0, 12, 1, "Armor", "Feet", null, "Cloth");
 
 
+
+        mage.Equip(EquipmentSlot.MainHand, Staff);
+        mage.Equip(EquipmentSlot.Head, Circlet);
+        mage.Equip(EquipmentSlot.Chest, Robe);
+        mage.Equip(EquipmentSlot.Feet, Slippers);
+
+        mage.LevelUp();
+        mage.LevelUp();
+        mage.LevelUp();
 
 
 

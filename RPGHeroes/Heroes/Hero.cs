@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPGHeroes.Equipment;
 
 namespace RPGHeroes.Heroes
 {
@@ -10,10 +11,8 @@ namespace RPGHeroes.Heroes
     {
         public string Name { get; set; }
         public int Level { get; set; }
-        public int Health { get; set; }
-        public int Mana { get; set; }
 
-        public string Class { get; set; }
+        public abstract string CharacterClass { get; }
 
         /*
         im thinking having two types of stats, Base which is the stats the hero is initialized + the stats from stat growth.
@@ -23,36 +22,34 @@ namespace RPGHeroes.Heroes
         public int BaseDexterity { get; set; }
         public int BaseIntelligence { get; set; }
         */
+        public HeroAttributes Attributes { get; set; }
 
-        public int Strength { get; set; }
-        public int Dexterity { get; set; }
-        public int Intelligence { get; set; }
-        public List<Enum> ValidWeaponTypes { get; set; }
-        public List<Enum> ValidArmorTypes { get; set; }
-        public Dictionary<Enum, object> Equipment { get; set; }
+        public HeroAttributeGrowth AttributeGrowth { get; set; }
+        public List<WeaponBaseType> ValidWeaponTypes { get; set; }
+        public List<ArmorType> ValidArmorTypes { get; set; }
+        public Dictionary<EquipmentSlot, Equipment.Equipment> Equipment { get; set; }
 
 
         public Hero(string name)
         {
             Name = name;
             Level = 1;
-            Equipment = new Dictionary<Enum, object>();
+            Equipment = new Dictionary<EquipmentSlot, Equipment.Equipment>();
+            Attributes = new HeroAttributes();
+            AttributeGrowth = new HeroAttributeGrowth();
         }
 
-        public void LevelUp(int strengthGrowth, int dexterityGrowth, int intelligenceGrowth)
+        public virtual void LevelUp()
         {
             Level++;
-            Strength += strengthGrowth;
-            Dexterity += dexterityGrowth;
-            Intelligence += intelligenceGrowth;
+            Attributes.Strength += AttributeGrowth.StrengthGrowth;
+            Attributes.Dexterity += AttributeGrowth.DexterityGrowth;
+            Attributes.Intelligence += AttributeGrowth.IntelligenceGrowth;
         }
 
-        public void Equip(Enum equipmentType, object equipment)
+        public void Equip(EquipmentSlot equipmentType, Equipment.Equipment equipment)
         {
-            if (ValidWeaponTypes.Contains(equipmentType) || ValidArmorTypes.Contains(equipmentType))
-            {
-                Equipment[equipmentType] = equipment;
-            }
+            Equipment[equipmentType] = equipment;
         }
 
         public int Damage()
@@ -80,12 +77,17 @@ namespace RPGHeroes.Heroes
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Name: " + Name + "\n");
-            sb.Append("Class: " + Class + "\n");
+            sb.Append("Class: " + CharacterClass + "\n");
             sb.Append("Level: " + Level + "\n");
-            sb.Append("Total Strength: " + Strength + "\n");
-            sb.Append("Total Dexterity: " + Dexterity + "\n");
-            sb.Append("Total Intelligence: " + Intelligence + "\n");
+            sb.Append("Total Strength: " + Attributes.Strength + "\n");
+            sb.Append("Total Dexterity: " + Attributes.Dexterity + "\n");
+            sb.Append("Total Intelligence: " + Attributes.Intelligence + "\n");
             sb.Append("Damage: " + Damage() + "\n");
+            foreach (var slot in Equipment)
+            {
+                Console.WriteLine("Slot: " + slot.Key + "\nName: " + slot.Value.Name + "\nDefense: " + slot.Value.Defense + "\n____________");
+            }
+
             return sb.ToString();
         }
 

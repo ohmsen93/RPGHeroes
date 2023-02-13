@@ -15,8 +15,12 @@ namespace RPGHeroes.Equipment
     {
         public WeaponBaseType BaseType { get; set; }
 
-        public Weapon(string name, int attack, int levelRequirement, WeaponBaseType baseType) : base(name, attack, 0, levelRequirement)
+        public EquipmentSlot Slot { get; set; }
+
+
+        public Weapon(string name, int attack, int levelRequirement, EquipmentSlot slot, WeaponBaseType baseType) : base(name, attack, 0, levelRequirement)
         {
+            Slot = slot;
             BaseType = baseType;
         }
 
