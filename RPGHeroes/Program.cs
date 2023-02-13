@@ -10,10 +10,10 @@ class Program
 
         EquipmentFactory factory = new ConcreteEquipmentFactory();
 
-        Equipment Staff = factory.CreateEquipment("Aether Staff", 32, 0, 1, "Weapon", "MainHand", "Staff");
-        Equipment Circlet = factory.CreateEquipment("Aether Circlet", 0, 2, 1, "Armor", "Head", null, "Cloth");
-        Equipment Robe = factory.CreateEquipment("Aether Robes", 0, 32, 1, "Armor", "Chest", null, "Cloth");
-        Equipment Slippers = factory.CreateEquipment("Aether Slippers", 0, 12, 1, "Armor", "Feet", null, "Cloth");
+        Equipment Staff = factory.CreateEquipment("Aether Staff", 32, 0, 1, "Weapon", "MainHand", weaponBaseType: "Staff");
+        Equipment Circlet = factory.CreateEquipment("Aether Circlet", 0, 2, 1, "Armor", "Head", armorType: "Cloth");
+        Equipment Robe = factory.CreateEquipment("Aether Robes", 0, 32, 1, "Armor", "Chest", armorType: "Cloth");
+        Equipment Slippers = factory.CreateEquipment("Aether Slippers", 0, 12, 1, "Armor", "Feet", armorType: "Cloth");
 
 
 
