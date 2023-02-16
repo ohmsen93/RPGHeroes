@@ -45,10 +45,37 @@ namespace RPGHeroes.Heroes
 
         public void Equip(EquipmentSlot equipmentType, Equipment.Equipment equipment)
         {
+            if (equipment.LevelRequirement > Level)
+            {
+                throw new ArgumentException("You are below the level requirement to equip this");
+            }
+
+            if (equipment is Weapon)
+            {
+                var weapon = (Weapon)equipment;
+                if (!ValidWeaponTypes.Contains(weapon.BaseType))
+                {
+                    throw new ArgumentException("This weapon type is not available for your class");
+                }
+            }
+            else if (equipment is Armor)
+            {
+                var armor = (Armor)equipment;
+                if (!ValidArmorTypes.Contains(armor.Type))
+                {
+                    throw new ArgumentException("This armor type is not available for your class");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Invalid equipment type");
+            }
+
             Equipment[equipmentType] = equipment;
         }
 
-        public int Damage()
+
+        public double Damage()
         {
             var totalAttributes = TotalAttributes();
 
@@ -62,7 +89,6 @@ namespace RPGHeroes.Heroes
             {
                 weaponDamage = 1;
             }
-
 
             var damagingAttribute = 0;
 
@@ -78,11 +104,15 @@ namespace RPGHeroes.Heroes
                     damagingAttribute = totalAttributes.Intelligence;
                     break;
                 default:
+                    throw new ArgumentException("The Damaging Attribute for this class does not exist");
                     break;
             }
 
-            var damage = weaponDamage * (1 + damagingAttribute / 100);
-            return damage;
+
+
+            var damage = (weaponDamage * (1 + (damagingAttribute / 100.0)));
+
+            return (double)damage;
         }
 
         public Attributes TotalAttributes()
@@ -121,8 +151,8 @@ namespace RPGHeroes.Heroes
             foreach (var slot in Equipment)
             {
     
-                Console.WriteLine(
-                    "Slot: " + slot.Key + 
+                sb.Append(
+                    "\nSlot: " + slot.Key + 
                     "\nName: " + slot.Value.Name + 
                     "\nDefense: " + slot.Value.Defense + 
                     "\nEnchantments - " + 

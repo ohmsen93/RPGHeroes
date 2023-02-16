@@ -26,7 +26,7 @@ public class UnitTestEquipment
 
 
         //Act
-        Weapon staff = (Weapon)factory.CreateEquipment("Aether Staff", 32, 0, 1, "Weapon", "MainHand", intelligenceEnchantment: 12, weaponBaseType: "Staff");
+        Weapon staff = (Weapon)factory.CreateEquipment(name, attack, defence, levelRequirement, "Weapon", "MainHand", intelligenceEnchantment: intelligenceEnchantment, weaponBaseType: weaponBaseType);
 
   
 
@@ -60,7 +60,7 @@ public class UnitTestEquipment
 
 
         //Act
-        Armor robe = (Armor)factory.CreateEquipment("Aether Robe", 0, 20, 1, "Armor", "Chest", strengthEnchantment: 2, dexterityEnchantment: 2, intelligenceEnchantment: 4, armorType: "Cloth");
+        Armor robe = (Armor)factory.CreateEquipment(name, attack, defence, levelRequirement, "Armor", "Chest", strengthEnchantment: strengthEnchantment, dexterityEnchantment: dexterityEnchantment, intelligenceEnchantment: intelligenceEnchantment, armorType: "Cloth");
 
 
 
@@ -75,5 +75,7 @@ public class UnitTestEquipment
         Assert.Equal(dexterityEnchantment, robe.EnchantmentAttributes.Dexterity);
         Assert.Equal(intelligenceEnchantment, robe.EnchantmentAttributes.Intelligence);
     }
+
+
 
 }

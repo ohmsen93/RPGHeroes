@@ -6,29 +6,24 @@ class Program
     static void Main(string[] args)
     {
 
-        Mage mage = new Mage("Trogdorr");
+        Mage mage = new Mage("Merlin");
 
         EquipmentFactory factory = new ConcreteEquipmentFactory();
 
-        Equipment Staff = factory.CreateEquipment("Aether Staff", 32, 0, 1, "Weapon", "MainHand", intelligenceEnchantment: 12, weaponBaseType: "Staff");
-        Equipment Circlet = factory.CreateEquipment("Aether Circlet", 0, 2, 1, "Armor", "Head", intelligenceEnchantment: 5, armorType: "Cloth");
-        Equipment Robe = factory.CreateEquipment("Aether Robes", 0, 32, 1, "Armor", "Chest", intelligenceEnchantment: 2, strengthEnchantment:4, armorType: "Cloth");
-        Equipment Slippers = factory.CreateEquipment("Aether Slippers", 0, 12, 1, "Armor", "Feet", dexterityEnchantment: 2, armorType: "Cloth");
+        Weapon staff = (Weapon)factory.CreateEquipment("Aether Staff", 32, 0, 1, "Weapon", "MainHand", intelligenceEnchantment: 12, weaponBaseType: "Staff");
+        Armor robe = (Armor)factory.CreateEquipment("Aether Robe", 0, 20, 1, "Armor", "Chest", strengthEnchantment: 2, dexterityEnchantment: 2, intelligenceEnchantment: 4, armorType: "Cloth");
+        Armor circlet = (Armor)factory.CreateEquipment("Aether circlet", 0, 2, 1, "Armor", "Head", strengthEnchantment: 2, dexterityEnchantment: 2, intelligenceEnchantment: 8, armorType: "Cloth");
+        Armor feet = (Armor)factory.CreateEquipment("Aether slippers", 0, 12, 1, "Armor", "Feet", strengthEnchantment: 2, dexterityEnchantment: 2, intelligenceEnchantment: 5, armorType: "Cloth");
 
 
 
-        mage.Equip(EquipmentSlot.MainHand, Staff);
-        mage.Equip(EquipmentSlot.Head, Circlet);
-        mage.Equip(EquipmentSlot.Chest, Robe);
-        mage.Equip(EquipmentSlot.Feet, Slippers);
-
-        mage.LevelUp();
-        mage.LevelUp();
-        mage.LevelUp();
+        mage.Equip(EquipmentSlot.MainHand, staff);
+        mage.Equip(EquipmentSlot.Head, circlet);
+        mage.Equip(EquipmentSlot.Chest, robe);
+        mage.Equip(EquipmentSlot.Feet, feet);
 
 
 
-        Console.WriteLine("Status: ");
         Console.WriteLine(mage.Display());
    
     }
