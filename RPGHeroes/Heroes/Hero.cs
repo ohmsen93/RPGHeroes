@@ -47,7 +47,7 @@ namespace RPGHeroes.Heroes
         {
             if (equipment.LevelRequirement > Level)
             {
-                throw new ArgumentException("You are below the level requirement to equip this");
+                throw new ArgumentException("The player's level is not high enough to equip this item.");
             }
 
             if (equipment is Weapon)
@@ -55,7 +55,7 @@ namespace RPGHeroes.Heroes
                 var weapon = (Weapon)equipment;
                 if (!ValidWeaponTypes.Contains(weapon.BaseType))
                 {
-                    throw new ArgumentException("This weapon type is not available for your class");
+                    throw new ArgumentException("The player does not meet the requirements to equip this item.");
                 }
             }
             else if (equipment is Armor)
@@ -63,7 +63,7 @@ namespace RPGHeroes.Heroes
                 var armor = (Armor)equipment;
                 if (!ValidArmorTypes.Contains(armor.Type))
                 {
-                    throw new ArgumentException("This armor type is not available for your class");
+                    throw new ArgumentException("The player does not meet the requirements to equip this item.");
                 }
             }
             else
