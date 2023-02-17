@@ -1,2 +1,125 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RPGHeroes.Heroes.AttributeGrowth" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Heroes\AttributeGrowth.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RPGHeroes.Heroes.Attributes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Heroes\Attributes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.192" Collapsed="true" />
+  </Class>
+  <Class Name="RPGHeroes.Heroes.Hero" Collapsed="true">
+    <Position X="15" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAEAAAAAAAAAAAQQRAABAAAAhIAgAAAAAQAA=</HashCode>
+      <FileName>Heroes\Hero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Heroes.Mage" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Heroes\Mage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Heroes.Ranger" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Heroes\Ranger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Heroes.Rogue" Collapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Heroes\Rogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Heroes.Warrior" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Heroes\Warrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Equipment.Armor" Collapsed="true">
+    <Position X="19.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgA=</HashCode>
+      <FileName>Equipment\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Equipment.ConcreteEquipmentFactory" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Equipment\ConcreteEquipmentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Equipment.Equipment" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAgAAAAAAAAAAAQAAIAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Equipment\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPGHeroes.Equipment.Weapon" Collapsed="true">
+    <Position X="17" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAgA=</HashCode>
+      <FileName>Equipment\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquipmentFactory" Collapsed="true">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAQAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Equipment\EquipmentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="RPGHeroes.Heroes.IAttributeGrowth" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Heroes\IAttributeGrowth.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RPGHeroes.Heroes.IAttributes" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Heroes\IAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="RPGHeroes.Equipment.ArmorType" Collapsed="true">
+    <Position X="13.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAIAAAAAAAQgAAAA=</HashCode>
+      <FileName>Equipment\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RPGHeroes.Equipment.EquipmentSlot" Collapsed="true">
+    <Position X="15.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAwAAQIEAEAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Equipment\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RPGHeroes.Equipment.WeaponBaseType" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgCAAAAAAAAAQAAAAAAAAAICIABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Equipment\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -357,7 +357,7 @@ namespace TestRPGHeroes
             mage.Equip(EquipmentSlot.Feet, feet);
 
             //Assert
-            var expectedDisplay = "Name: Merlin\nClass: Mage\nLevel: 1\nTotal Strength: 7(+6)\nTotal Dexterity: 7(+6)\nTotal Intelligence: 37(+29)\nDamage: 43,84\n\nSlot: MainHand\nName: Aether Staff\nDefense: 0\nEnchantments - \nStrength: 0\nDexterity: 0\nIntelligence: 12\n____________\nSlot: Head\nName: Aether circlet\nDefense: 2\nEnchantments - \nStrength: 2\nDexterity: 2\nIntelligence: 8\n____________\nSlot: Chest\nName: Aether Robe\nDefense: 20\nEnchantments - \nStrength: 2\nDexterity: 2\nIntelligence: 4\n____________\nSlot: Feet\nName: Aether slippers\nDefense: 12\nEnchantments - \nStrength: 2\nDexterity: 2\nIntelligence: 5\n____________";
+            var expectedDisplay = "Name: Merlin\nClass: Mage\nLevel: 1\nTotal Strength: 7(+6)\nTotal Dexterity: 7(+6)\nTotal Intelligence: 37(+29)\nDamage: 43.84\n\nSlot: MainHand\nName: Aether Staff\nDefense: 0\nEnchantments - \nStrength: 0\nDexterity: 0\nIntelligence: 12\n____________\nSlot: Head\nName: Aether circlet\nDefense: 2\nEnchantments - \nStrength: 2\nDexterity: 2\nIntelligence: 8\n____________\nSlot: Chest\nName: Aether Robe\nDefense: 20\nEnchantments - \nStrength: 2\nDexterity: 2\nIntelligence: 4\n____________\nSlot: Feet\nName: Aether slippers\nDefense: 12\nEnchantments - \nStrength: 2\nDexterity: 2\nIntelligence: 5\n____________";
                 Assert.Equal(expectedDisplay, mage.Display());
         }
 

@@ -152,6 +152,8 @@ namespace RPGHeroes.Heroes
         // Here we utilize the StringBuilder to display the info on our hero.
         public string Display()
         {
+            var damage = Damage().ToString().Replace(",", "."); ;
+
             var totalAttributes = TotalAttributes();
             StringBuilder sb = new StringBuilder();
             sb.Append("Name: " + Name + "\n");
@@ -160,7 +162,7 @@ namespace RPGHeroes.Heroes
             sb.Append("Total Strength: " + totalAttributes.Strength + "(+"+ (totalAttributes.Strength -Attributes.Strength) +")" + "\n");
             sb.Append("Total Dexterity: " + totalAttributes.Dexterity + "(+" + (totalAttributes.Dexterity - Attributes.Dexterity) + ")" + "\n");
             sb.Append("Total Intelligence: " + totalAttributes.Intelligence + "(+" + (totalAttributes.Intelligence -Attributes.Intelligence) + ")" + "\n");
-            sb.Append("Damage: " + Damage() + "\n");
+            sb.Append("Damage: " + damage + "\n");
             foreach (var slot in Equipment)
             {
     
