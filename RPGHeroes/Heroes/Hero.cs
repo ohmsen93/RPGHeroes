@@ -35,6 +35,7 @@ namespace RPGHeroes.Heroes
             AttributeGrowth = new AttributeGrowth();
         }
 
+        //LevelUp Method, attribute increases based of the attribute growth of the subClass Mage, Ranger, Rogue, Warrior
         public virtual void LevelUp()
         {
             Level++;
@@ -43,15 +44,19 @@ namespace RPGHeroes.Heroes
             Attributes.Intelligence += AttributeGrowth.IntelligenceGrowth;
         }
 
+        // Equips equipment and throws the relevant exceptions when not meeting specified requirements.
         public void Equip(EquipmentSlot equipmentType, Equipment.Equipment equipment)
         {
+            // We check if the hero meets the levelRequirements
             if (equipment.LevelRequirement > Level)
             {
                 throw new ArgumentException("The player's level is not high enough to equip this item.");
             }
 
+            // We check if the equipment is of the subclass Weapon or Armor
             if (equipment is Weapon)
             {
+                // we check if the weapons baseType is available for the specific hero
                 var weapon = (Weapon)equipment;
                 if (!ValidWeaponTypes.Contains(weapon.BaseType))
                 {
@@ -60,6 +65,7 @@ namespace RPGHeroes.Heroes
             }
             else if (equipment is Armor)
             {
+                // we check if the armor's ArmorType is available for the specific hero
                 var armor = (Armor)equipment;
                 if (!ValidArmorTypes.Contains(armor.Type))
                 {
@@ -71,16 +77,19 @@ namespace RPGHeroes.Heroes
                 throw new ArgumentException("Invalid equipment type");
             }
 
+            // if we hit none of the Exceptions we insert the equipment into our Equipment Dict
             Equipment[equipmentType] = equipment;
         }
 
 
+        // Here we calculate the damage of the hero
         public double Damage()
         {
             var totalAttributes = TotalAttributes();
 
             var weaponDamage = 0;
 
+            // We check if the hero has a weapon equipped, else we set the weaponDamage to 1
             if (Equipment.ContainsKey(EquipmentSlot.MainHand))
             {
                 weaponDamage = Equipment[EquipmentSlot.MainHand].Attack;    
@@ -92,6 +101,7 @@ namespace RPGHeroes.Heroes
 
             var damagingAttribute = 0;
 
+            // We check the subClass for the relevant damage Attribute, fx. in case of a mage, this attribute would be Intelligence
             switch (DamagingAttribute)
             {
                 case "Strength":
@@ -109,22 +119,25 @@ namespace RPGHeroes.Heroes
             }
 
 
-
+            //We calculate and return the damage
             var damage = (weaponDamage * (1 + (damagingAttribute / 100.0)));
 
-            return (double)damage;
+            return damage;
         }
 
+
+        // Here we calculate the total attributes of the hero on the fly.
         public Attributes TotalAttributes()
         {
-
+            // we create a new attribute instance
             var returnAttr = new Attributes();
 
+            // set our base stats to the new instance
             returnAttr.Strength = Attributes.Strength;
             returnAttr.Dexterity = Attributes.Dexterity;
             returnAttr.Intelligence = Attributes.Intelligence;
 
-
+            // add attributes from the equipment, and return the attributes
                 foreach (var slot in Equipment)
                 {
                     returnAttr.Strength += slot.Value.EnchantmentAttributes.Strength;
@@ -136,7 +149,7 @@ namespace RPGHeroes.Heroes
         }
 
 
-
+        // Here we utilize the StringBuilder to display the info on our hero.
         public string Display()
         {
             var totalAttributes = TotalAttributes();

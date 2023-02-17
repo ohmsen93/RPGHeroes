@@ -2,6 +2,7 @@
 
 public class ConcreteEquipmentFactory : EquipmentFactory
 {
+    //CreateEquipment method, which creates either a weapon or a piece of armor based of input parameters
     public override Equipment CreateEquipment(string name, int attack, int defense, int levelRequirement, string type,
         string subType,
         int strengthEnchantment, int dexterityEnchantment, int intelligenceEnchantment, string weaponBaseType = null,
